@@ -1,0 +1,39 @@
+.container {
+  margin: 40px 40px;
+}
+
+.card {
+  background-color: whitesmoke;
+  width: 400px;
+  height: 540px;
+  border: 1px solid rgb(218, 195, 203);
+}
+
+.image {
+  width: 80%;
+  margin: 40px;
+}
+
+.title {
+  font-size: small;
+  font-style: normal;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.text {
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+}
+
+#select {
+  background-color: rgb(152, 31, 177);
+  color: white;
+  font-weight: bold;
+  width: 100px;
+}
