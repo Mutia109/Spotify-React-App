@@ -1,17 +1,15 @@
-.container {
-  margin: 40px 40px;
-}
-
 .card {
   background-color: whitesmoke;
-  width: 400px;
-  height: 540px;
+  width: 350px;
+  height: 500px;
   border: 1px solid rgb(218, 195, 203);
+  border-radius: 30px;
 }
 
 .image {
   width: 80%;
   margin: 40px;
+  border-radius: 20px;
 }
 
 .title {
@@ -32,8 +30,14 @@
 }
 
 #select {
-  background-color: rgb(152, 31, 177);
+  background-color: rgb(97, 11, 97);
   color: white;
   font-weight: bold;
   width: 100px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+#select:hover{
+  background-color: rgb(3, 105, 12);
 }

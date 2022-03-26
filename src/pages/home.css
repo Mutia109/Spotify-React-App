@@ -1,0 +1,7 @@
+.songs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  margin: 30px 10px;
+  justify-items: center;
+}
