@@ -1,85 +1,82 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from "react";
 import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 import './home.css';
 import config from '../library/config';
 
+// const getHashParams = () =>{
+//     const hashParams = {};
+//     const r = /([^&;=]+)=?([^&;]*)/g;
+//     const q = window.location.hash.substring(1);
+//     let e = r.exec(q);
+//     while (e) {
+//       hashParams[e[1]] = decodeURIComponent(e[2]);
+//       e = r.exec(q);
+//     }
+//     return hashParams;
+//   }
 
-class Home extends Component {  
-  state = {
-    accToken : '',
-    isLogin: false,
-    tracks:[],
-  }
+const Home = () =>{
+    const [accToken, setAccToken] = useState('');
+    const [isLogin, setIsLogin] = useState(false);
+    const [tracks, setTracks] = useState([]);
+    const [selected, setSelected] = useState([]);
 
-  getHashParams() {
-    const hashParams = {};
-    const r = /([^&;=]+)=?([^&;]*)/g;
-    const q = window.location.hash.substring(1);
-    let e = r.exec(q);
-    while (e) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-      e = r.exec(q);
+    useEffect(() => {
+      const access_token= new URLSearchParams(window.location.hash).get('#access_token')
+    
+      setAccToken(access_token);
+      setIsLogin(access_token !== null);
+    }, [])
+
+    const getLinkAuth = () =>{
+        const state = Date.now().toString();
+        const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+    
+        return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
+      }
+    
+    const onSuccessSearch = (tracks) => {
+      const selectedTracks = filterSelectedTracks();
+      const searchDistincTracks = tracks.filter(track => !selected.includes(track.uri));
+  
+      setTracks([...selectedTracks, ...searchDistincTracks]);
     }
-    return hashParams;
-  }
 
-  componentDidMount() {
-    const params = this.getHashParams();
-    const {access_token : accessToken} = params;
+    const toggleSelect = (track) => {
+      const uri = track.uri;
+  
+      if (selected.includes(uri)) {
+        setSelected(selected.filter(item => item !== uri));
+      } else {
+        setSelected([...selected, uri]);
+      }
+    }
 
-    this.setState({accToken: accessToken, isLogin: accessToken !== undefined});
-
-  }
-
-  getLinkAuth(){
-    const state = Date.now().toString();
-    const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-
-    return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
-  }
-
-  onSuccessSearch(tracks) {
-    this.setState({ tracks });
-  }
+    const filterSelectedTracks = () => {
+      return tracks.filter(track => selected.includes(track.uri));
+    }
 
 
-  render() {
-      return (
+    return(
         <div className="home">
           <div className='search-bar'>
-            {!this.state.isLogin &&( <a href={this.getLinkAuth()}>Auth</a>)}
-            <SearchBar accessToken={this.state.accToken} onSuccess={(tracks) =>this.onSuccessSearch(tracks)}/>
+            {!isLogin &&( <a href={getLinkAuth()}>Auth</a>)}
+            <SearchBar accessToken={accToken} onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>
           <div className='songs'>
-            {this.state.tracks.map(d => (
+            {tracks.map(track => (
               <Card
-                key={d.id}
-                image = {d.album.images[0].url}
-                title = {d.name}
-                artists ={d.artists[0].name}
+                key={track.id}
+                image = {track.album.images[0].url}
+                title = {track.name}
+                artists ={track.artists[0].name}
+                toggleSelect={() => toggleSelect(track)}
               />
             ))}
           </div>
         </div>
-      )
-  }
+    )
 }
 export default Home;
 
-// export default function Home() {
-//   return (
-//     <div className="home">
-//       <SearchBar/>
-//       <div className='songs'>
-//         {data.map(d => (
-//           <Card
-//             image = {d.album.images[0].url}
-//             title = {d.name}
-//             artists ={d.artists[0].name}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
