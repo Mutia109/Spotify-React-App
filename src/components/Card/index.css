@@ -1,8 +1,8 @@
 .card {
-  background-color: rgb(32, 32, 32);
+  background-color: rgba(241, 246, 250, 0.616);
   width: 250px;
   height: 330px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(15, 10, 10);
   border-radius: 30px;
 }
 
@@ -20,14 +20,14 @@
   font-style: normal;
   text-align: center;
   margin-top: 20px;
-  color: white;
+  color: rgb(8, 7, 7);
 }
 
 .artists {
   font-style: normal;
   font-weight: normal;
   text-align: center;
-  color: white;
+  color: black;
 }
 
 .btn-card {
@@ -45,4 +45,5 @@
 
 #select:hover {
   background-color: rgb(3, 105, 12);
+  color: black;
 }

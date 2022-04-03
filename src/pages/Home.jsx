@@ -3,31 +3,43 @@ import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 import './home.css';
 import config from '../library/config';
-
-// const getHashParams = () =>{
-//     const hashParams = {};
-//     const r = /([^&;=]+)=?([^&;]*)/g;
-//     const q = window.location.hash.substring(1);
-//     let e = r.exec(q);
-//     while (e) {
-//       hashParams[e[1]] = decodeURIComponent(e[2]);
-//       e = r.exec(q);
-//     }
-//     return hashParams;
-//   }
+import CreatePlayList from "../components/CreatePlayList";
 
 const Home = () =>{
     const [accToken, setAccToken] = useState('');
     const [isLogin, setIsLogin] = useState(false);
     const [tracks, setTracks] = useState([]);
     const [selected, setSelected] = useState([]);
+    const [user, setUser] = useState({});
 
     useEffect(() => {
-      const access_token= new URLSearchParams(window.location.hash).get('#access_token')
+      const accessTokenParams= new URLSearchParams(window.location.hash).get('#access_token')
     
-      setAccToken(access_token);
-      setIsLogin(access_token !== null);
-    }, [])
+      if (accessTokenParams !== null) {
+        setAccToken(accessTokenParams);
+        setIsLogin(accessTokenParams !== null);
+  
+        const setUserProfile = async () => {
+          try {
+            const requestOptions = {
+      headers: {
+        'Authorization': 'Bearer ' + accessTokenParams,
+        'Content-Type': 'application/json',
+      },
+    };
+    console.log(requestOptions);
+  
+    const response = await fetch(`${config.SPOTIFY_BASE_URL}/me`, requestOptions).then(data => data.json());
+            console.log(response);
+            setUser(response);
+          } catch (e) {
+            alert(e);
+          }
+        }
+  
+        setUserProfile();
+      }
+    }, []);
 
     const getLinkAuth = () =>{
         const state = Date.now().toString();
@@ -60,6 +72,7 @@ const Home = () =>{
 
     return(
         <div className="home">
+          {isLogin &&(<CreatePlayList accessToken={accToken} userId={user.id} uris={selected}/>)}
           <div className='search-bar'>
             {!isLogin &&( <a href={getLinkAuth()}>Auth</a>)}
             <SearchBar accessToken={accToken} onSuccess={(tracks) => onSuccessSearch(tracks)}/>
