@@ -4,20 +4,21 @@ import SearchBar from '../components/SearchBar';
 import './home.css';
 import config from '../library/config';
 import CreatePlayList from "../components/CreatePlayList";
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../reducer/authRedux';
 
 const Home = () =>{
-    const [accToken, setAccToken] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
     const [tracks, setTracks] = useState([]);
     const [selected, setSelected] = useState([]);
     const [user, setUser] = useState({});
+    const isLogin = useSelector(state => state.auth.isLogin);
+    const dispatch = useDispatch();
 
     useEffect(() => {
       const accessTokenParams= new URLSearchParams(window.location.hash).get('#access_token')
     
       if (accessTokenParams !== null) {
-        setAccToken(accessTokenParams);
-        setIsLogin(accessTokenParams !== null);
+        dispatch(login(accessTokenParams));
   
         const setUserProfile = async () => {
           try {
@@ -27,7 +28,6 @@ const Home = () =>{
         'Content-Type': 'application/json',
       },
     };
-    console.log(requestOptions);
   
     const response = await fetch(`${config.SPOTIFY_BASE_URL}/me`, requestOptions).then(data => data.json());
             console.log(response);
@@ -72,10 +72,10 @@ const Home = () =>{
 
     return(
         <div className="home">
-          {isLogin &&(<CreatePlayList accessToken={accToken} userId={user.id} uris={selected}/>)}
+          {isLogin &&(<CreatePlayList  userId={user.id} uris={selected}/>)}
           <div className='search-bar'>
             {!isLogin &&( <a href={getLinkAuth()}>Auth</a>)}
-            <SearchBar accessToken={accToken} onSuccess={(tracks) => onSuccessSearch(tracks)}/>
+            <SearchBar  onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>
           <div className='songs'>
             {tracks.map(track => (

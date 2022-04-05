@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import config from '../../library/config';
 import './index.css'
+import { useSelector } from "react-redux";
 
 
 const SearchBar = (props) =>{
+    const accessToken = useSelector((state) => state.auth.accessToken);
     const [text, setText] = useState('');
 
     const handleInput = (e) =>{
@@ -15,7 +17,7 @@ const SearchBar = (props) =>{
 
         var requestOptions = {
             headers: {
-              'Authorization': 'Bearer ' + props.accessToken,
+              'Authorization': 'Bearer ' + accessToken,
               'Content-Type': 'application/json',
             }
           };

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import './index.css';
 import config from "../../library/config";
+import { useSelector } from "react-redux";
 
-const CreatePlaytList = ({accessToken, userId, uris}) => {
+const CreatePlaytList = ({userId, uris}) => {
+    const accessToken = useSelector((state) => state.auth.accessToken);
+    
     const [form, setForm] = useState({
         title: '',
         description: ''
