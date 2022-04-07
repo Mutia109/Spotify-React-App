@@ -3,8 +3,9 @@ import './index.css';
 import config from "../../library/config";
 import { useSelector } from "react-redux";
 
-const CreatePlaytList = ({userId, uris}) => {
+const CreatePlaytListForm = ({uris}) => {
     const accessToken = useSelector((state) => state.auth.accessToken);
+    const userId = useSelector((state) => state.auth.user.id);
     
     const [form, setForm] = useState({
         title: '',
@@ -89,4 +90,4 @@ const CreatePlaytList = ({userId, uris}) => {
     )
 
 }
-export default CreatePlaytList;
+export default CreatePlaytListForm;

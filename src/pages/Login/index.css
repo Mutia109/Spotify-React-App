@@ -1,6 +1,12 @@
-a {
-  margin-right: 30px;
-  color: black;
+.auth-link{
+  text-align: center;
+  padding-top: 30px;
+}
+
+#link{
+  color: white;
+  font-style: normal;
+  font-weight: bolder;
 }
 
 .search-bar {

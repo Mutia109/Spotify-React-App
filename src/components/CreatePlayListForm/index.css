@@ -1,7 +1,15 @@
+.create-form{
+    background-color: rgb(24, 23, 23);
+    height: 230px;
+    width: 500px;
+    margin: 0 auto;
+}
+
 #text{
     font-weight: bold;
     font-size: 32px;
     font-family: 'Helvatica';
+    color: white;
 }
 
 .input{
