@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
 
-export default function Card({image, title, artists, toggleSelect }) {
+export default Card = ({image, title, artists, toggleSelect }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleToggleSelect=()=>{

@@ -20,14 +20,13 @@ const CreatePlaytListForm = ({uris}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(form.title.length > 10){
-
             try {
                 const requestOptions = {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Bearer ' + accessToken,
                         'Content-Type': 'application/json',
-                      }
+                    }
                 }
                 
                 const optionsCreatePlaylist = {
@@ -59,7 +58,7 @@ const CreatePlaytListForm = ({uris}) => {
             alert(error);
             }
         }else{
-            alert('Title must be large 10 characters');
+            alert('Title must be large than 10 characters');
         }
     }
 
