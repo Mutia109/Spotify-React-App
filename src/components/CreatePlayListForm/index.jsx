@@ -75,7 +75,7 @@ const CreatePlaytListForm = ({uris}) => {
                 <textarea 
                     name="description" 
                     id="description" 
-                    cols="53" 
+                    cols="37" 
                     rows="3"
                     placeholder="Description"
                     value={form.description}

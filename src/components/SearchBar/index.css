@@ -1,3 +1,7 @@
+.form-search{
+  margin-top: 9px;
+}
+
 .form-search-input {
   width: 1000px;
   height: 27px;
@@ -6,7 +10,7 @@
 }
 
 #btn-search {
-  margin-left: 20px;
+  margin-left: 5px;
   height: 30px;
   border-radius: 10px;
   border: 1px solid black;

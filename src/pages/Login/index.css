@@ -1,25 +1,10 @@
 .auth-link{
   text-align: center;
-  padding-top: 30px;
+  margin-top: 30px;
 }
 
 #link{
   color: white;
   font-style: normal;
   font-weight: bolder;
-}
-
-.search-bar {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.songs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 35px;
-  justify-content: center;
-  margin: 50px;
 }

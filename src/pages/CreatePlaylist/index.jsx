@@ -1,8 +1,8 @@
 import CreatePlaytListForm from "../../components/CreatePlayListForm";
 import SearchBar from '../../components/SearchBar';
 import Card from '../../components/Card';
-import { useSelector } from "react-redux";
 import { useState } from "react";
+import './index.css';
     
 const CreatePlayList = () =>{
     const [tracks, setTracks] = useState([]);
@@ -35,7 +35,7 @@ const CreatePlayList = () =>{
           <div className='search-bar'>
             <SearchBar  onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>
-          <div className='songs'>
+          <div className='tracks'>
             {tracks.map(track => (
               <Card
                 key={track.id}
