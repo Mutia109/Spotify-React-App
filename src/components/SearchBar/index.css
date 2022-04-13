@@ -1,12 +1,13 @@
 .form-search{
   margin-top: 9px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .form-search-input {
   width: 1000px;
-  height: 27px;
-  border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid rgb(240, 237, 237);
 }
 
 #btn-search {

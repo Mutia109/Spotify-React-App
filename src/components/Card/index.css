@@ -2,7 +2,7 @@
   display: flex;
   gap: 15px;
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid rgb(12, 12, 12);
   width: auto;
   height: auto;
 }
@@ -18,14 +18,14 @@
 }
 
 .title{
-  color: white;
+  color: rgb(8, 7, 7);
   font-style: normal;
   font-size: medium;
   font-weight: bold;
 }
 
 .artists{
-  color: white;
+  color: rgb(12, 11, 11);
   font-style: normal;
   font-size: small;
 }

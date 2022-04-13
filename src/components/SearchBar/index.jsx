@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import config from '../../library/config';
 import './index.css'
 import { useSelector } from "react-redux";
-
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const SearchBar = (props) =>{
     const accessToken = useSelector((state) => state.auth.accessToken);
@@ -38,14 +39,16 @@ const SearchBar = (props) =>{
 
     return(
         <form className="form-search" onSubmit={onSubmit}>
-            <input
-            type="text"
-            placeholder="Search..."
-            className="form-search-input"
-            required
-            onChange={handleInput}
-            />
-            <button id="btn-search" type='submit'>Search</button>
+            <TextField fullWidth 
+                label="Search" 
+                id="fullWidth" 
+                type="text"
+                className="form-search-input"
+                required
+                onChange={handleInput}/>
+            <Button variant="contained" color="success" className="btn-search">
+                 Search
+            </Button>
         </form>
     )
 }

@@ -4,6 +4,8 @@ import config from '../../library/config';
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../reducer/authRedux';
 import { useHistory } from "react-router-dom";
+import Navbar from "../../components/Navbar";
+
 const Login = () =>{
     const dispatch = useDispatch();
 
@@ -48,6 +50,7 @@ const Login = () =>{
   
     return(
       <div className="dashboard">
+        <Navbar/>
         <div className="auth-link">
           <a id="link" href={getLinkAuth()}>Auth</a>
         </div>

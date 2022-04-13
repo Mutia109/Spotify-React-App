@@ -31,10 +31,10 @@ const CreatePlayList = () =>{
 
     return(
         <div className="home">
-            <CreatePlaytListForm  uris={selected}/>
           <div className='search-bar'>
             <SearchBar  onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>
+          <CreatePlaytListForm  uris={selected}/>
           <div className='tracks'>
             {tracks.map(track => (
               <Card

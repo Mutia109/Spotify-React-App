@@ -1,13 +1,11 @@
 .search-bar {
     margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .tracks {
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     gap: 30px;
-    padding: 80px;
+    padding: 30px;
 }
+
