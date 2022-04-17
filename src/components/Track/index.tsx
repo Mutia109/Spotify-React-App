@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './index.css';
 
-export default function Card ({image, title, artists, toggleSelect }) {
-  const [isSelected, setIsSelected] = useState(false);
+interface IProps {
+  image: string;
+  title: string;
+  artists: string;
+  toggleSelect: () => void;
+}
 
-  const handleToggleSelect=()=>{
+const Track: React.FC <IProps> = ({image, title, artists, toggleSelect }) =>{
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+
+  const handleToggleSelect: () => void = () => {
     setIsSelected(!isSelected)
     toggleSelect()
   }
@@ -20,3 +27,4 @@ export default function Card ({image, title, artists, toggleSelect }) {
     </div>
   );
 }
+export default Track;

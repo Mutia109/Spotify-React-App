@@ -1,6 +1,6 @@
 import CreatePlaytListForm from "../../components/CreatePlayListForm";
 import SearchBar from '../../components/SearchBar';
-import Card from '../../components/Card';
+import Track from '../../components/Track';
 import { useState } from "react";
 import './index.css';
     
@@ -37,7 +37,7 @@ const CreatePlayList = () =>{
           <CreatePlaytListForm  uris={selected}/>
           <div className='tracks'>
             {tracks.map(track => (
-              <Card
+              <Track
                 key={track.id}
                 image = {track.album.images[0].url}
                 title = {track.name}
