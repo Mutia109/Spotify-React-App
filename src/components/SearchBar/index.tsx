@@ -48,9 +48,14 @@ const SearchBar: React.FC<IProps> = ({onSuccess}) => {
                 type="text"
                 className="form-search-input"
                 required
-                onChange={handleInput}/>
-            <Button variant="contained" color="success" className="btn-search">
-                 Search
+                onChange={handleInput}
+                data-testid = "search-input"/>
+            <Button 
+                variant="contained" 
+                type="submit"
+                color="success" 
+                className="btn-search"
+                data-testid ="search-button">Search
             </Button>
         </form>
     )

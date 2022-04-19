@@ -34,8 +34,8 @@ const CreatePlayList = () =>{
           <div className='search-bar'>
             <SearchBar  onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>
-          <CreatePlaytListForm  uris={selected}/>
-          <div className='tracks'>
+            <CreatePlaytListForm  uris={selected}/>
+          <div className='tracks' data-testid = "tracks-list">
             {tracks.map(track => (
               <Track
                 key={track.id}

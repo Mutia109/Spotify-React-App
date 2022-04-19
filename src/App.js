@@ -4,7 +4,7 @@ import Login from './pages/Login';
 import CreatePlaylist from './pages/CreatePlaylist';
 import {useSelector} from 'react-redux';
 
-function App() {
+const App = () => {
   const isLogin = useSelector(state => state.auth.isLogin);
   return (
     <Router>
