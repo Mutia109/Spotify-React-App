@@ -3,6 +3,7 @@ import SearchBar from '../../components/SearchBar';
 import Track from '../../components/Track';
 import { useState } from "react";
 import './index.css';
+import Navbar from "../../components/Navbar";
     
 const CreatePlayList = () =>{
     const [tracks, setTracks] = useState([]);
@@ -31,6 +32,7 @@ const CreatePlayList = () =>{
 
     return(
         <div className="home">
+          <Navbar/>
           <div className='search-bar'>
             <SearchBar  onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>

@@ -52,7 +52,7 @@ const Login = () =>{
       <div className="dashboard">
         <Navbar/>
         <div className="auth-link">
-          <a id="link" href={getLinkAuth()}>Auth</a>
+          <a id="link" href={getLinkAuth()}>Login</a>
         </div>
       </div>
     )
