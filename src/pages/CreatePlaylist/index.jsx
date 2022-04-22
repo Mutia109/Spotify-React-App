@@ -2,8 +2,8 @@ import CreatePlaytListForm from "../../components/CreatePlayListForm";
 import SearchBar from '../../components/SearchBar';
 import Track from '../../components/Track';
 import { useState } from "react";
-import './index.css';
 import Navbar from "../../components/Navbar";
+import './index.css';
     
 const CreatePlayList = () =>{
     const [tracks, setTracks] = useState([]);
@@ -31,7 +31,7 @@ const CreatePlayList = () =>{
       }
 
     return(
-        <div className="home">
+        <div className="CreatePlaylist">
           <Navbar/>
           <div className='search-bar'>
             <SearchBar  onSuccess={(tracks) => onSuccessSearch(tracks)}/>
@@ -44,6 +44,7 @@ const CreatePlayList = () =>{
                 image = {track.album.images[0].url}
                 title = {track.name}
                 artists ={track.artists[0].name}
+                duration = {track.duration_ms}
                 toggleSelect={() => toggleSelect(track)}
               />
             ))}

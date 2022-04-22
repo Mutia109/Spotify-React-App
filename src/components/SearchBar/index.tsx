@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {TRootState} from '../../store';
-import { ChangeEventHandler } from "react";
+import {ChangeEventHandler } from "react";
+import SearchIcon from '@mui/icons-material/Search';
 
 interface IProps{
     onSuccess: (tracks: any[]) => void;
@@ -43,19 +44,31 @@ const SearchBar: React.FC<IProps> = ({onSuccess}) => {
     return(
         <form className="form-search" onSubmit={onSubmit}>
             <TextField fullWidth 
+                sx ={{
+                    width: {sm:100, md:3500},
+                    "& .MuiOutlinedInput-root":{
+                        "& > fieldset" :{
+                            border:"0.5px solid white",
+                            borderRadius:"30px",
+                        }
+                    }
+                }}
                 label="Search" 
                 id="fullWidth" 
                 type="text"
-                className="form-search-input"
+                color="success"
+                InputLabelProps={{className: 'text_label'}}
                 required
                 onChange={handleInput}
-                data-testid = "search-input"/>
+                data-testid = "search-input"
+            />
             <Button 
                 variant="contained" 
                 type="submit"
-                color="success" 
+                id="btn" 
                 className="btn-search"
-                data-testid ="search-button">Search
+                data-testid ="search-button"> 
+                <SearchIcon fontSize="large"/>
             </Button>
         </form>
     )

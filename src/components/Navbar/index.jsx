@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,61 +7,18 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../reducer/authRedux';
-import { useHistory } from "react-router-dom";
-import config from '../../library/config';
+import {logout} from '../../reducer/authRedux';
 import './index.css';
 
 
 export default function Navbar() {
-  const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const dispatch = useDispatch();
 
   const isLogin = useSelector(state => state.auth.isLogin);
-
-  const history = useHistory(); 
-
-  React.useEffect(() => {
-    const accessTokenParams= new URLSearchParams(window.location.hash).get('#access_token')
   
-    if (accessTokenParams !== null) {
-
-      const setUserProfile = async () => {
-        try {
-          const requestOptions = {
-    headers: {
-      'Authorization': 'Bearer ' + accessTokenParams,
-      'Content-Type': 'application/json',
-    },
-  };
-
-  const response = await fetch(`${config.SPOTIFY_BASE_URL}/me`, requestOptions).then(data => data.json());
-        dispatch(login({
-          accessToken : accessTokenParams,
-          user : response,
-        }));
-        history.push("/create-playlist")
-        } catch (e) {
-          alert(e);
-        }
-
-      }
-
-      setUserProfile();
-    }
-  }, []);
-
-  const getLinkAuth = () =>{
-    const state = Date.now().toString();
-    const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-
-    return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${config.BASE_URL}&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
-  }
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -81,12 +38,12 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <HomeIcon color="inherit" fontSize="large"/>
+            <img src="assets/logo.png" alt="img" />
           </IconButton>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }} className="logo">
-            Spotify
+            Spotifi
           </Typography>
-          {isLogin ? (
+          {isLogin && (
             <div>
               <IconButton
                 size="large"
@@ -96,7 +53,7 @@ export default function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+              <AccountCircle  fontSize="large"/>
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -114,13 +71,9 @@ export default function Navbar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={() =>dispatch(logout())}>Logout</MenuItem>
               </Menu>
             </div>
-          ) : (
-                <div className="auth-link">
-                  <a id="link" href={getLinkAuth()}>Login</a>
-                </div>
           )}
         </Toolbar>
       </AppBar>

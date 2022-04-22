@@ -6,6 +6,6 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     gap: 30px;
-    padding: 30px;
+    padding: 40px;
 }
 

@@ -1,15 +1,16 @@
 .card{
   display: flex;
-  gap: 15px;
+  align-items: center;
   padding: 10px;
-  border: 1px solid rgb(12, 12, 12);
+  gap: 15px;
+  border: 1px solid rgb(255, 255, 255);
   width: auto;
   height: auto;
 }
 
 .image{
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
 }
 
 .item-card{
@@ -18,24 +19,31 @@
 }
 
 .title{
-  color: rgb(8, 7, 7);
+  color: rgb(255, 255, 255);
   font-style: normal;
   font-size: medium;
   font-weight: bold;
 }
 
 .artists{
-  color: rgb(12, 11, 11);
+  color: rgb(255, 255, 255);
   font-style: normal;
   font-size: small;
 }
 
+.duration{
+  color: rgb(255, 255, 255);
+  font-style: normal;
+  font-size: 10px;
+}
+
+
 #select{
-  width: 80px;
-  height: 25px;
+  width: 70px;
+  height: 35px;
   border: 1px solid white;
   border-radius: 50px;
-  background-color: rgb(1, 122, 1);
+  background-color: rgb(0, 126, 6);
   font-weight: bold;
 }
 

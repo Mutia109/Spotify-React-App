@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import './index.css';
 import config from "../../library/config";
 import { useSelector } from "react-redux";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import CreateIcon from '@mui/icons-material/Create';
 
 const CreatePlaytListForm = ({uris}) => {
     const accessToken = useSelector((state) => state.auth.accessToken);
@@ -63,27 +66,57 @@ const CreatePlaytListForm = ({uris}) => {
     }
 
     return(
-        <form className="create-form" onSubmit={handleSubmit}>
-            <div className="input">
-                <label id='text'>Create Playlist</label> <br/>
-                <input 
-                    type="text" 
-                    name="title"
-                    placeholder="Title..."
-                    value={form.title}
-                    onChange = {handleChange} /><br/>
-                <textarea 
-                    name="description" 
-                    id="description" 
-                    cols="37" 
-                    rows="3"
-                    placeholder="Description"
-                    value={form.description}
-                    onChange = {handleChange}>
-                </textarea><br/>
-            </div>
-            <div className="btn">
-                <button id='submit' type="submit">Create</button>
+        <form  onSubmit={handleSubmit}>
+            <div className="create-form">
+                <h4>Create Playlist</h4>
+                <div className="input-form">
+                    <TextField
+                        name="title"
+                        id="input-title"
+                        sx ={{
+                            width: {sm:10, md:600},
+                            "& .MuiOutlinedInput-root":{
+                                "& > fieldset" :{
+                                    border:"0.5px solid white",
+                                    borderRadius:"30px",
+                                }
+                            }
+                        }}
+                        label="Title"
+                        InputLabelProps={{className: 'title-label'}}
+                        multiline
+                        required
+                        color="success"
+                        value={form.title}
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        name="description"
+                        id="input-description"
+                        sx ={{
+                            width: {sm:10, md:600},
+                            "& .MuiOutlinedInput-root":{
+                                "& > fieldset" :{
+                                    border:"0.5px solid white",
+                                    borderRadius:"30px",
+                                }
+                            }
+                        }}
+                        label="Description"
+                        InputLabelProps={{className: 'desc-label'}}
+                        multiline
+                        required
+                        color="success"
+                        rows={3}
+                        value={form.description}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="btn">
+                    <Button  id ="create"  type = "submit" variant="contained" endIcon={<CreateIcon fontSize="large"/>}>
+                        Create
+                    </Button>
+                </div>
             </div>
         </form>
     )

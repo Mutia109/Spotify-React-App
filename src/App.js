@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import Login from './pages/Login';
 import CreatePlaylist from './pages/CreatePlaylist';
 import {useSelector} from 'react-redux';
-
+import Home from "./pages/Home";
 const App = () => {
   const isLogin = useSelector(state => state.auth.isLogin);
+  console.log(isLogin);
   return (
     <Router>
       <Switch>
@@ -17,7 +17,7 @@ const App = () => {
         )}
         </Route>
         <Route path={"/"} >
-          <Login/>
+          <Home/>
         </Route>
       </Switch>
     </Router>
