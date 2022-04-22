@@ -1,43 +1,37 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spotifi
 
-## Available Scripts
+A replica of the Spotify application that can create new playlists on a spotify account.
 
-In the project directory, you can run:
+## About Spotifi
 
+Spotify is a music platform connected to Spotify that uses the Spotify API to integrate data. It will connect to your Spotify account, allowing you to view all your playlists in your Spotify account and even create new ones! You can also add multiple tracks to your playlist, and search for the tracks you want.
+
+On spotifi you have to login, where you first land before you connect your Spotify account to Spotify, once logged in you will be able to access to create a new playlist where you can search for the desired song and add it to a new playlist. Then you can login when you have finished creating what you want.
+
+You can have the full experience of this project [here](https://spotify-react-app-green.vercel.app/)
+
+## Built With
+This project was built using [React.js](https://reactjs.org/) with React Router to make them as an SPA (Single Page Application), Redux and Recoil State for the state management, Jest for the test, a little bit of Typescript, and Vercel for the deployment.
+
+# Getting Started
+This section will explain more about how to run, test, and built this project in the development mode.
+
+## Run The App on Local
+1. Clone the repo
+### `git clone https://github.com/Mutia109/Spotify-React-App.git`
+2. Open the repo's folder on your terminal
+3. Change the Spotify Key on .env file to your own Spotify Key
+4. Change the Redirect URI on .env file to http://localhost:3000
+5. Install NPM Packages
+### `npm install`
+6. Run the app
 ### `npm start`
+7. Open http://localhost:3000 to view it your browser. The page will reload if you make edits
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
+## Testing
+Launches the test runner in the interactive watch mode by running this command on your terminal:
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 
